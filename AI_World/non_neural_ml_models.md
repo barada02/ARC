@@ -4,11 +4,13 @@ markmap:
   initialExpandLevel: 2
 ---
 
-# 🧩 Non-Neural Machine Learning Models
+# 🧩 Non-Neural Machine Learning
 
-## 📈 **Linear Models**
+## 🤖 **ML Models**
 
-### 🔹 Linear Regression
+### 📈 **Linear Models**
+
+#### 🔹 Linear Regression
 - **Purpose**: Predict continuous values
 - **Formula**: `y = w₀ + w₁x₁ + w₂x₂ + ... + wₙxₙ`
 - **Loss Function**: Mean Squared Error (MSE)
@@ -23,7 +25,7 @@ markmap:
 - **Cons**: Assumes linearity, sensitive to outliers
 - **Use Cases**: Price prediction, sales forecasting
 
-### 🔹 Logistic Regression
+#### 🔹 Logistic Regression
 - **Purpose**: Binary/multiclass classification
 - **Formula**: `p = 1/(1 + e^(-z))` where `z = w₀ + w₁x₁ + ...`
 - **Loss Function**: Log-likelihood/Cross-entropy
@@ -37,15 +39,15 @@ markmap:
 - **Cons**: Assumes linear decision boundary
 - **Use Cases**: Email spam detection, medical diagnosis
 
-### 🔹 Polynomial Regression
+#### 🔹 Polynomial Regression
 - **Purpose**: Capture non-linear relationships
 - **Method**: Add polynomial features (x², x³, xy, etc.)
 - **Risk**: High degree → overfitting
 - **Regularization**: Essential for higher degrees
 
-## 🌳 **Tree-Based Models**
+### 🌳 **Tree-Based Models**
 
-### 🔹 Decision Trees
+#### 🔹 Decision Trees
 - **Purpose**: Classification and regression
 - **Structure**: Binary splits creating if-else rules
 - **Splitting Criteria**
@@ -61,7 +63,7 @@ markmap:
 - **Cons**: Prone to overfitting, unstable
 - **Pruning**: Remove branches to reduce overfitting
 
-### 🔹 Random Forest
+#### 🔹 Random Forest
 - **Purpose**: Ensemble of decision trees
 - **Method**: Bootstrap Aggregating (Bagging)
 - **Process**
@@ -78,7 +80,7 @@ markmap:
 - **Cons**: Less interpretable, can overfit with noise
 - **OOB Score**: Out-of-bag validation estimate
 
-### 🔹 Gradient Boosting Trees
+#### 🔹 Gradient Boosting Trees
 - **Purpose**: Sequential ensemble learning
 - **Method**: Each tree corrects previous errors
 - **Popular Implementations**
@@ -92,9 +94,9 @@ markmap:
 - **Pros**: High accuracy, handles mixed data
 - **Cons**: Prone to overfitting, requires tuning
 
-## 📏 **Distance-Based Models**
+### 📏 **Distance-Based Models**
 
-### 🔹 K-Nearest Neighbors (KNN)
+#### 🔹 K-Nearest Neighbors (KNN)
 - **Purpose**: Classification and regression
 - **Method**: "Lazy learning" - stores all training data
 - **Prediction Process**
@@ -113,7 +115,7 @@ markmap:
 - **Cons**: Computationally expensive, sensitive to scale
 - **Preprocessing**: Feature scaling essential
 
-### 🔹 K-Means Clustering
+#### 🔹 K-Means Clustering
 - **Purpose**: Unsupervised clustering
 - **Algorithm**
   1. Initialize K cluster centers
@@ -126,9 +128,9 @@ markmap:
 - **Pros**: Simple, efficient for spherical clusters
 - **Cons**: Assumes spherical clusters, needs K
 
-## 🎯 **Support Vector Machines (SVM)**
+### 🎯 **Support Vector Machines (SVM)**
 
-### 🔹 Linear SVM
+#### 🔹 Linear SVM
 - **Purpose**: Classification with maximum margin
 - **Concept**: Find hyperplane with largest margin
 - **Support Vectors**: Points closest to decision boundary
@@ -138,7 +140,7 @@ markmap:
   - High C: Hard margin (low bias, high variance)
   - Low C: Soft margin (high bias, low variance)
 
-### 🔹 Non-Linear SVM (Kernel Trick)
+#### 🔹 Non-Linear SVM (Kernel Trick)
 - **Purpose**: Handle non-linearly separable data
 - **Method**: Map data to higher dimension
 - **Common Kernels**
@@ -151,9 +153,9 @@ markmap:
 - **Pros**: Effective in high dimensions, memory efficient
 - **Cons**: Slow on large datasets, no probability estimates
 
-## 📊 **Probabilistic Models**
+### 📊 **Probabilistic Models**
 
-### 🔹 Naive Bayes
+#### 🔹 Naive Bayes
 - **Purpose**: Classification using Bayes' theorem
 - **Formula**: `P(class|features) = P(features|class) × P(class) / P(features)`
 - **"Naive" Assumption**: Features are independent
@@ -165,7 +167,7 @@ markmap:
 - **Cons**: Independence assumption rarely true
 - **Use Cases**: Text classification, spam filtering
 
-### 🔹 Gaussian Mixture Models (GMM)
+#### 🔹 Gaussian Mixture Models (GMM)
 - **Purpose**: Soft clustering, density estimation
 - **Assumption**: Data comes from mixture of Gaussian distributions
 - **Algorithm**: Expectation-Maximization (EM)
@@ -173,9 +175,11 @@ markmap:
 - **Parameters**: Means, covariances, mixing coefficients
 - **Model Selection**: BIC, AIC for number of components
 
-## 🔍 **Dimensionality Reduction**
+## 🔧 **ML Techniques & Best Practices**
 
-### 🔹 Principal Component Analysis (PCA)
+### 🔍 **Dimensionality Reduction**
+
+#### 🔹 Principal Component Analysis (PCA)
 - **Purpose**: Reduce dimensionality while preserving variance
 - **Method**: Find directions of maximum variance
 - **Process**
@@ -188,13 +192,13 @@ markmap:
 - **Cons**: Linear transformation, less interpretable
 - **Applications**: Preprocessing, visualization, compression
 
-### 🔹 Linear Discriminant Analysis (LDA)
+#### 🔹 Linear Discriminant Analysis (LDA)
 - **Purpose**: Dimensionality reduction for classification
 - **Goal**: Maximize between-class variance, minimize within-class variance
 - **Difference from PCA**: Supervised (uses class labels)
 - **Output**: Linear discriminants for classification
 
-### 🔹 t-SNE
+#### 🔹 t-SNE
 - **Purpose**: Non-linear dimensionality reduction for visualization
 - **Method**: Preserve local neighborhood structure
 - **Hyperparameters**
@@ -203,34 +207,34 @@ markmap:
 - **Pros**: Great for visualization, captures non-linear structure
 - **Cons**: Computationally expensive, not deterministic
 
-## 🎲 **Ensemble Methods**
+### 🎲 **Ensemble Methods**
 
-### 🔹 Bagging
+#### 🔹 Bagging
 - **Purpose**: Reduce variance through averaging
 - **Method**: Train multiple models on bootstrap samples
 - **Examples**: Random Forest, Extra Trees
 - **Benefits**: Reduces overfitting, parallel training
 
-### 🔹 Boosting
+#### 🔹 Boosting
 - **Purpose**: Reduce bias through sequential learning
 - **Method**: Each model corrects previous errors
 - **Examples**: AdaBoost, Gradient Boosting, XGBoost
 - **Benefits**: High accuracy, handles weak learners
 
-### 🔹 Voting Classifiers
+#### 🔹 Voting Classifiers
 - **Hard Voting**: Majority class prediction
 - **Soft Voting**: Average predicted probabilities
 - **Requirement**: Diverse base models for best results
 
-## 🔧 **Model Evaluation & Selection**
+### 🔧 **Model Evaluation & Selection**
 
-### 🔹 Cross-Validation
+#### 🔹 Cross-Validation
 - **K-Fold CV**: Split data into k folds
 - **Stratified CV**: Maintains class distribution
 - **Leave-One-Out CV**: K = n (number of samples)
 - **Time Series CV**: Respect temporal order
 
-### 🔹 Metrics
+#### 🔹 Metrics
 - **Classification**
   - Accuracy, Precision, Recall, F1-score
   - ROC-AUC, Confusion Matrix
@@ -239,15 +243,15 @@ markmap:
 - **Clustering**
   - Silhouette Score, Adjusted Rand Index
 
-### 🔹 Hyperparameter Tuning
+#### 🔹 Hyperparameter Tuning
 - **Grid Search**: Exhaustive search over parameter grid
 - **Random Search**: Random sampling of parameters
 - **Bayesian Optimization**: Smart parameter search
 - **Validation Strategy**: Always use separate validation set
 
-## 🎯 **Algorithm Selection Guide**
+### 🎯 **Algorithm Selection Guide**
 
-### 🔹 By Problem Type
+#### 🔹 By Problem Type
 - **Linear Separable**: Logistic Regression, Linear SVM
 - **Non-Linear**: Kernel SVM, Tree-based models
 - **High Dimensions**: Naive Bayes, Linear models
@@ -256,7 +260,7 @@ markmap:
 - **Interpretability**: Decision Trees, Linear Regression
 - **Speed**: Naive Bayes, Linear models
 
-### 🔹 By Data Characteristics
+#### 🔹 By Data Characteristics
 - **Mixed Data Types**: Tree-based models
 - **Text Data**: Naive Bayes, Linear models
 - **Outliers Present**: Tree-based models, Robust regression
