@@ -1,12 +1,18 @@
+---
+markmap:
+  colorFreezeLevel: 2
+  initialExpandLevel: 1
+---
+
 # 🌐 Artificial Intelligence (AI)
+
 ## 1. Major Branches
+
 ### 🤖 Machine Learning (ML)
 - Algorithms that learn patterns from data
 - Two core families:
   - **Classical ML (Non-Neural)**
   - **Deep Learning (Neural Network–Based)**
-
----
 
 ## 2. 🧩 Classical / Non-Neural Machine Learning
 ### 🧮 Core Idea
@@ -46,8 +52,6 @@
   - SVM → maximize class margin
   - Decision Tree → minimize impurity
 - Uses **analytical or geometric optimization**, not backpropagation
-
----
 
 ## 3. 🧠 Neural Network / Deep Learning
 ### 💡 Foundational Unit: The Perceptron
@@ -93,8 +97,6 @@
 - **GNN (Graph Neural Network)**
   - Works on graph-structured data
 
----
-
 ## 4. 🧬 Scaling Up → Foundation Models
 - **LLMs (Large Language Models)**
   - Massive Transformer networks (GPT, Claude, Gemini)
@@ -103,8 +105,6 @@
 - **Multimodal Models**
   - Combine text, image, audio (GPT-4, Gemini 1.5)
 
----
-
 ## 5. 🧰 AI Systems and Applications
 - Chatbots (ChatGPT, Claude)
 - Image generators (DALL·E, Midjourney)
@@ -112,8 +112,6 @@
 - Recommendation engines
 - Autonomous agents (AutoGPT, Devin)
 - Robotics and control systems
-
----
 
 ## 6. ⚖️ Neural vs. Non-Neural Summary
 | Feature | Neural Network Models | Classical ML Models |
@@ -124,7 +122,5 @@
 | **Interpretability** | Low (black box) | High (transparent math) |
 | **Computation** | Heavy (GPU) | Light (CPU) |
 | **Power** | High for complex patterns | Limited for simple ones |
-
----
 
 ## 7. 🧭 Big Picture Hierarchy
