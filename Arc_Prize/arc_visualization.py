@@ -136,20 +136,46 @@ def visualize_task(task: Dict[str, Any]) -> Dict[str, List[Image.Image]]:
     # Process training examples
     for i, example in enumerate(task.get('train', [])):
         input_grid = np.array(example.get('input', []))
-        output_grid = np.array(example.get('output', []))
-        
         input_image = plot_grid(input_grid, f"Train {i+1} - Input")
-        output_image = plot_grid(output_grid, f"Train {i+1} - Output")
+        
+        # Check if output exists
+        if 'output' in example:
+            output_grid = np.array(example.get('output', []))
+            output_image = plot_grid(output_grid, f"Train {i+1} - Output")
+        else:
+            # Create a placeholder image for missing output
+            fig, ax = plt.subplots(figsize=(4, 4))
+            ax.text(0.5, 0.5, "No output data available", 
+                    ha='center', va='center', color='red')
+            ax.axis('off')
+            buf = io.BytesIO()
+            plt.savefig(buf, format='png', dpi=150)
+            buf.seek(0)
+            output_image = Image.open(buf)
+            plt.close(fig)
         
         result['train'].append((input_image, output_image))
     
     # Process test examples
     for i, example in enumerate(task.get('test', [])):
         input_grid = np.array(example.get('input', []))
-        output_grid = np.array(example.get('output', []))
-        
         input_image = plot_grid(input_grid, f"Test {i+1} - Input")
-        output_image = plot_grid(output_grid, f"Test {i+1} - Output")
+        
+        # Check if output exists
+        if 'output' in example:
+            output_grid = np.array(example.get('output', []))
+            output_image = plot_grid(output_grid, f"Test {i+1} - Output")
+        else:
+            # Create a placeholder image for missing output
+            fig, ax = plt.subplots(figsize=(4, 4))
+            ax.text(0.5, 0.5, "No output data available", 
+                    ha='center', va='center', color='red')
+            ax.axis('off')
+            buf = io.BytesIO()
+            plt.savefig(buf, format='png', dpi=150)
+            buf.seek(0)
+            output_image = Image.open(buf)
+            plt.close(fig)
         
         result['test'].append((input_image, output_image))
     
