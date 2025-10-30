@@ -27,23 +27,33 @@ This document presents a **hybrid neural-symbolic architecture** inspired by how
 
 ```mermaid
 flowchart TD
-    A[🟩 Input Grid<br>(Matrix 0-9)] --> B[🧠 Encoder E<br>(Feature Map H×W×D)]
-    B --> C[🗂️ ProtoMemory M<br>(Retrieve Nearest Prototypes)]
-    C --> D[🎛️ Controller C<br>(Program Generator)]
-    D --> E[🔧 Primitives P₁…Pₙ<br>(Neural/Symbolic Operations)]
-    E --> F[🧩 apply_program()<br>Execute Sequence]
-    F --> G[🏁 Predicted Grid<br>(Output Solution)]
+    A["🟩 Input Grid
+    (Matrix 0-9)"] --> B["🧠 Encoder E
+    (Feature Map H×W×D)"]
+    B --> C["🗂️ ProtoMemory M
+    (Retrieve Nearest Prototypes)"]
+    C --> D["🎛️ Controller C
+    (Program Generator)"]
+    D --> E["🔧 Primitives P₁…Pₙ
+    (Neural/Symbolic Operations)"]
+    E --> F["🧩 apply_program()
+    Execute Sequence"]
+    F --> G["🏁 Predicted Grid
+    (Output Solution)"]
     
     %% Feedback Loops
-    G --> H[📉 Loss Computation<br>(L_final, L_pred, L_proto)]
+    G --> H["📉 Loss Computation
+    (L_final, L_pred, L_proto)"]
     H --> B
     H --> D  
     H --> E
     
     %% Optional Components
-    B --> I[🌍 World Model W<br>Predict Next State]
+    B --> I["🌍 World Model W
+    Predict Next State"]
     I --> H
-    C --> J[💡 Curiosity Module<br>Intrinsic Motivation]
+    C --> J["💡 Curiosity Module
+    Intrinsic Motivation"]
     J --> B
     
     style H fill:#ffebee
@@ -85,10 +95,14 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A[Input Grid 0-9] --> B[One-Hot Encoding<br>or Embedding]
-    B --> C[CNN Layers<br>or Patch MLP]
-    C --> D[Feature Map<br>H×W×D]
-    D --> E[Global Summary<br>via Pooling]
+    A["Input Grid 0-9"] --> B["One-Hot Encoding
+    or Embedding"]
+    B --> C["CNN Layers
+    or Patch MLP"]
+    C --> D["Feature Map
+    H×W×D"]
+    D --> E["Global Summary
+    via Pooling"]
     
     style D fill:#e1f5fe
 ```
@@ -128,13 +142,18 @@ class Encoder(nn.Module):
 
 ```mermaid
 flowchart TD
-    A[New Pattern] --> B[Encode to Key Vector]
-    B --> C[Similarity Search<br>in Memory]
-    C --> D[Retrieve Top-K<br>Nearest Neighbors]
-    D --> E[Extract Associated<br>Programs/Actions]
-    E --> F[Provide Context<br>to Controller]
+    A["New Pattern"] --> B["Encode to Key Vector"]
+    B --> C["Similarity Search
+    in Memory"]
+    C --> D["Retrieve Top-K
+    Nearest Neighbors"]
+    D --> E["Extract Associated
+    Programs/Actions"]
+    E --> F["Provide Context
+    to Controller"]
     
-    G[Successful Solution] --> H[Store Pattern-Program<br>Pair in Memory]
+    G["Successful Solution"] --> H["Store Pattern-Program
+    Pair in Memory"]
     
     style C fill:#f3e5f5
     style H fill:#f3e5f5
@@ -172,11 +191,13 @@ class ProtoMemory:
 
 ```mermaid
 flowchart TD
-    A[Encoder Features] --> C[Controller Input]
-    B[Memory Hints] --> C
-    C --> D[Program Generation<br>Transformer/LSTM]
-    D --> E[Primitive Sequence<br>+ Arguments]
-    E --> F[Execution Planning]
+    A["Encoder Features"] --> C["Controller Input"]
+    B["Memory Hints"] --> C
+    C --> D["Program Generation
+    Transformer/LSTM"]
+    D --> E["Primitive Sequence
+    + Arguments"]
+    E --> F["Execution Planning"]
     
     style D fill:#fff3e0
 ```
@@ -208,13 +229,13 @@ program = [
 
 ```mermaid
 flowchart TD
-    A[Program Sequence] --> B[Primitive Dispatcher]
-    B --> C[Spatial Operations]
-    B --> D[Color Operations] 
-    B --> E[Object Operations]
-    B --> F[Pattern Operations]
+    A["Program Sequence"] --> B["Primitive Dispatcher"]
+    B --> C["Spatial Operations"]
+    B --> D["Color Operations"] 
+    B --> E["Object Operations"]
+    B --> F["Pattern Operations"]
     
-    C --> G[Grid State Update]
+    C --> G["Grid State Update"]
     D --> G
     E --> G
     F --> G
@@ -292,13 +313,14 @@ def TILE_PATTERN(grid, pattern, region):
 
 ```mermaid
 flowchart TD
-    A[Current Grid] --> C[World Model]
-    B[Primitive Action] --> C
-    C --> D[Predicted Next Grid]
-    D --> E[Compare with Actual]
-    E --> F[Update Model]
+    A["Current Grid"] --> C["World Model"]
+    B["Primitive Action"] --> C
+    C --> D["Predicted Next Grid"]
+    D --> E["Compare with Actual"]
+    E --> F["Update Model"]
     
-    C --> G[Enable Planning<br>& Curiosity]
+    C --> G["Enable Planning
+    & Curiosity"]
     
     style C fill:#fff8e1
 ```
@@ -321,12 +343,12 @@ def world_model_loss(predicted_grid, actual_grid):
 
 ```mermaid
 flowchart TD
-    A[Final Prediction] --> E[Loss Computation]
-    B[World Model Prediction] --> E
-    C[Memory Retrieval] --> E
-    D[Regularization Terms] --> E
-    E --> F[Combined Loss]
-    F --> G[Backpropagation]
+    A["Final Prediction"] --> E["Loss Computation"]
+    B["World Model Prediction"] --> E
+    C["Memory Retrieval"] --> E
+    D["Regularization Terms"] --> E
+    E --> F["Combined Loss"]
+    F --> G["Backpropagation"]
     
     style E fill:#ffebee
 ```
